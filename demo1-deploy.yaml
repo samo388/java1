@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo1
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo1
+  template:
+    metadata:
+      labels:
+        app: demo1
+    spec:
+      containers:
+        - name: demo1
+          image: samo388/demo1-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8090
