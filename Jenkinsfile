@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "samo388/demo1-app"
-        IMAGE_TAG  = "${env.BUILD_NUMBER}"
-    }
+    IMAGE_NAME = "sam840/demo1-app"
+    IMAGE_TAG  = "${BUILD_NUMBER}"
+}
+
 
     stages {
 
@@ -24,7 +25,7 @@ pipeline {
 
         stage('Build Docker Image') {
     steps {
-        sh 'docker build -t samo388/demo1-app:15 .'
+        sh 'docker build -t sam840/demo1-app:17 .'
 
     }
 }
@@ -40,7 +41,7 @@ pipeline {
 
             sh '''
               echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-              docker push samo388/demo1-app:15
+              docker push sam840/demo1-app:17
             '''
         }
     }
