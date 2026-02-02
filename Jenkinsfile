@@ -50,13 +50,10 @@ pipeline {
 
 
         stage('Deploy to Kubernetes') {
-            steps {
-                sh '''
-                kubectl apply -f demo1-deploy.yaml
-                kubectl apply -f demo1-svc.yaml
-                kubectl apply -f demo1-ingress.yaml
-                '''
-            }
+             steps {
+        sh '''
+        kubectl apply -f demo1-ingress.yaml
+        '''
         }
     }
 }
