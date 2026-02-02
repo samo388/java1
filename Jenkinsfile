@@ -24,7 +24,8 @@ pipeline {
 
         stage('Build Docker Image') {
     steps {
-        sh 'docker build -t $IMAGE_NAME:latest .'
+        sh 'docker build -t samo388/demo1-app:${IMAGE_TAG} .'
+
     }
 }
 
@@ -39,7 +40,7 @@ pipeline {
 
             sh '''
               echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-              docker push $IMAGE_NAME:$IMAGE_TAG
+              docker push samo388/demo1-app:${IMAGE_TAG}
             '''
         }
     }
