@@ -23,14 +23,11 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            steps {
-                sh '''
-               docker build -t $IMAGE_NAME:latest .
-              docker push $IMAGE_NAME:latest
+    steps {
+        sh 'docker build -t $IMAGE_NAME:latest .'
+    }
+}
 
-                '''
-            }
-        }
 
         stage('Docker Login & Push') {
             steps {
